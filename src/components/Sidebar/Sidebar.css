@@ -1,22 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 *{
-    color: #1f1f1f;
+    /* color: var(--text-main); */
 }
-.sidebar{
-    min-height: 100vh;
-    /* min-width: 20vw; */
-    display: inline-flex;
-    flex-direction: column;
+.sidebar {
+  min-height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 26px 18px;
+  background-color: var(--bg-sidebar);
+
+  width: 308px;                 /* open width */
+  transition: width 0.3s ease;  /* 🔥 smooth animation */
+  overflow: hidden;             /* hide text while closing */
+}
+
+.sidebar.closed {
+  width: 72px;                  /* collapsed width */
+}
+
+.sidebar p {
+  white-space: nowrap;
+  transition: 
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sidebar.closed p {
+  opacity: 0;
+  transform: translateX(-10px);
+  pointer-events: none;
+}
+
+.sidebar .new-chat {
+  transition: background-color 0.2s ease;
+}
+
+
+
+
+.nav-sb{
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    /* background-color: #f0f4f9; */
-    background-color: #e1e7f0;
-    padding: 26px 18px;
 }
+
+.sidebar .recent-title,
+.sidebar #react,
+.sidebar #settings{
+  color: var(--text-muted);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  margin-right: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
 
 .sidebar img{
     width: 20px;
     height: 20px;
     /* background-color: #e1e7f0; */
+    filter: var(--icon-filter);
 }
 
 .sidebar .menu{
@@ -25,6 +74,7 @@
     cursor: pointer;
         /* background-color: #e1e7f0;  */
         font-weight: 700;
+        color: var(--font-color);
 }
 
 .sidebar .new-chat{
@@ -36,25 +86,33 @@
     /* background-color: #e6eaf1; */
     border-radius: 50px;
     font-size: 15px;
-    color: #1f1f1f;
+    color: var(--font-color);
     cursor: pointer;
     font-weight: 500;
     font-family: Outfit;
 }
 
+.sidebar #chat{
+    color: var(--font-color);
+}
+
 .sidebar .plus{
     font-weight: 800;
+    height: 21px;
+    width: 15px;
+    color: var(--font-color);
 }
 
 .sidebar .recent{
-margin-bottom: 21.5rem;
+margin-bottom: 50vh;
+color: var(--font-color);
 }
 
 .sidebar .recent-title{
     margin-top: 25px;
     font-size: 14.5px;
     font-weight: 600;
-    color: #4b4b4b;
+    color: var(--font-color);
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 6px;
 }
@@ -62,7 +120,7 @@ margin-bottom: 21.5rem;
 .sidebar #react{
     font-size: 14.5px;
     font-weight: 500;
-    color: #4b4b4b;
+    color: var(--font-color);
     font-family: Outfit;
    
 }
@@ -83,8 +141,55 @@ margin-bottom: 21.5rem;
 }
 
 .sidebar #settings{
-        font-size: 14.5px;
+        font-size: 15.4px;
     font-weight: 500;
-    color: #4b4b4b;
+    color: var(--font-color);
     font-family: Outfit;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 72px;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+
+    height: 100vh;
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar.closed {
+    transform: translateX(-100%);
+  }
+}
+/* 🔥 MOBILE MENU FIX */
+@media (max-width: 768px) {
+
+  /* Keep sidebar hidden */
+  .sidebar.closed {
+    transform: translateX(-100%);
+  }
+
+  /* But KEEP menu icon visible */
+  .sidebar .menu {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 1200;
+
+    background: var(--bg-card);
+    padding: 8px;
+    border-radius: 50%;
+  }
 }

@@ -10,3 +10,50 @@
 body{
   background-color: #f0f4f8;
 }
+
+#root{
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Ensure the app's top-level wrapper arranges Sidebar + Main horizontally */
+#root > div{
+  display: flex;
+  width: 100%;
+}
+
+:root {
+  --main-nav1-color: #656e68;  
+  --bg-main: #f0f4f8;
+  --bg-sidebar: #e9eef6;
+  --bg-card: #ffffff;
+  --text-main: #1f1f1f;
+  --text-muted: #4b4b4b;
+  --border-soft: #dadce0;
+    --prompt-bg: #ffffff;
+  --font-color: #444746;
+  --icon-filter: invert(0);
+  --version-color: #fff;
+}
+
+/* 🌙 DARK MODE */
+body.dark {
+  --main-title-color: #f1f1f1;
+  --main-nav1-color: #919692;
+  --bg-main: #000000;
+  --bg-sidebar: #1e1f20; /*sidebar bg color*/
+  --bg-card: #1f1f1f;
+  --text-main: #ffffff;
+  --text-muted: #b0b0b0;
+  --border-soft: #333;
+  --prompt-bg: #1e1f20;
+  --font-color: #c4c7c5;
+  --icon-filter: invert(1);
+  --version-color: transparent;
+}
+
+@media (max-width: 1024px) {
+  #root > div {
+    flex-direction: row;
+  }
+}
