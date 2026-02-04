@@ -9,7 +9,7 @@ This project demonstrates **real-world frontend engineering skills**, including 
 
 ## 🔗 Live Demo
 
-https://gemini-ux-lab.vercel.app
+https://gemini-ux-lab.netlify.app
 ---
 
 ## 🎯 Project Goals
